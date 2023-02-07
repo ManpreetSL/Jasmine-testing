@@ -1,18 +1,19 @@
 describe("Address Book", () => {
-  it("should be able to add a contact", () => {
-    let addressBook = new AddressBook();
-    let thisContact = new Contact();
+  let addressBook;
+  let contact;
 
-    addressBook.addContact(thisContact);
-
-    expect(addressBook.getContact(0)).toBe(thisContact);
-  });
-
-  it('should be able to delete a contact', () => {
-    let addressBook = new AddressBook();
-    let contact = new Contact();
+  beforeEach(() => {
+    addressBook = new AddressBook();
+    contact = new Contact();
 
     addressBook.addContact(contact);
+  });
+
+  it("should be able to add a contact", () => {
+    expect(addressBook.getContact(0)).toBe(contact);
+  });
+
+  it("should be able to delete a contact", () => {
     addressBook.deleteContact(0);
 
     expect(addressBook.getContact(0)).not.toBeDefined();
